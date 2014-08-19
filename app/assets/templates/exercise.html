@@ -1,0 +1,21 @@
+<form class="form-horizontal" ng-controller="ExerciseController">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Energy</label>
+    <div class="col-sm-10 has-feedback">
+      <input ng-model="exercise.energy" class="form-control" type="text" placeholder="energy" />
+      <span class="glyphicon glyphicon-fire form-control-feedback" ng-click="convert()"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Start</label>
+    <div class="col-sm-10">
+      <input ng-model="exercise.start_time" type="time" class="form-control" placeholder="HH:mm" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Duration</label>
+    <div class="col-sm-10">
+      <input ng-model="exercise.duration" class="form-control" type="text" placeholder="duration" />
+    </div>
+  </div>
+</form>

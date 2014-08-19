@@ -2,9 +2,19 @@
 @import "bootstrap";
 
 body {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 .starter-template {
-  padding: 40px 15px;
+  padding: 40px 10px;
   text-align: center;
+}
+
+.tcy {
+  border: 1px solid #f1f5f9;
+  background-color: #f1f5f9;
+  padding-top: 1em;
+}
+
+.tcy-full {
+  padding-bottom: 1em;
 }

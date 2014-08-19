@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -39,5 +39,18 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'angularjs-rails'
+gem 'angular-ui-bootstrap-rails'
+gem 'angular-rails-templates'
+gem 'lodash-rails', '~> 2.4.1'
 
-gem 'thin'
+group :development do
+  gem 'thin'
+
+  gem 'bootstrap-generators', '~> 3.1.1.3'
+
+  # need by guard to detect changes on os x
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-test'
+  gem 'guard-livereload'
+end

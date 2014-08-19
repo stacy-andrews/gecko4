@@ -1,0 +1,26 @@
+<div ng-controller="DailyEntryController"> 
+  <div class="row">
+    <div class="tcy tcy-full">
+  {{ currentDay.date | date:'mediumDate' }} ({{currentDay.energySummary()}})  <span class="glyphicon glyphicon-save" ng-click="save()"></span>
+    </div>
+  </div>
+
+  <div class="row" style="height:10px">
+  </div> 
+  <div class="row ">
+    <div class="col-md-6 tcy">
+      <exercise info="currentDay.toWork" ></exercise>
+    </div>
+    <div class="col-md-6 tcy">
+      <exercise info="currentDay.fromWork" ></exercise>
+    </div>
+  </div>
+  <div class="row" style="height:10px">
+  </div>  
+  <div class="row" ng-repeat="section in currentDay.sections">
+    <food section="section"></food>
+  </div>
+  <div class="row">
+    <span class="glyphicon glyphicon-exclamation-sign" ng-click="delete()"></span>
+  </div>
+</div>
