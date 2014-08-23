@@ -1,0 +1,37 @@
+<%= form_for(@catalogue_food) do |f| %>
+  <% if @catalogue_food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@catalogue_food.errors.count, "error") %> prohibited this catalogue_food from being saved:</h2>
+
+      <ul>
+      <% @catalogue_food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_energy %><br>
+    <%= f.text_field :unit_energy %>
+  </div>
+  <div class="field">
+    <%= f.label :carbohydrate %><br>
+    <%= f.text_field :carbohydrate %>
+  </div>
+  <div class="field">
+    <%= f.label :protein %><br>
+    <%= f.text_field :protein %>
+  </div>
+  <div class="field">
+    <%= f.label :fat %><br>
+    <%= f.text_field :fat %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

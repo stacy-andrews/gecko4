@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @catalogue_food.description %>
+</p>
+
+<p>
+  <strong>Unit energy:</strong>
+  <%= @catalogue_food.unit_energy %>
+</p>
+
+<p>
+  <strong>Carbohydrate:</strong>
+  <%= @catalogue_food.carbohydrate %>
+</p>
+
+<p>
+  <strong>Protein:</strong>
+  <%= @catalogue_food.protein %>
+</p>
+
+<p>
+  <strong>Fat:</strong>
+  <%= @catalogue_food.fat %>
+</p>
+
+<%= link_to 'Edit', edit_catalogue_food_path(@catalogue_food) %> |
+<%= link_to 'Back', catalogue_foods_path %>
