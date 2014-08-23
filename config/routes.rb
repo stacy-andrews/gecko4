@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :food_catalogues
+
+  
   get 'spa/index'
 
   root 'spa#index'
