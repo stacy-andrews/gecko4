@@ -1,0 +1,1 @@
+CatalogueFood.update_all
