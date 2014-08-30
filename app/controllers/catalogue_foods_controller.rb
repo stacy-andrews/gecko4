@@ -2,7 +2,7 @@ class CatalogueFoodsController < ApplicationController
   before_action :set_catalogue_food, only: [:show, :edit, :update, :destroy]
 
   def index
-    @catalogue_foods = CatalogueFood.all
+    @catalogue_foods = CatalogueFood.search_by_description(params[:description])
   end
 
   def show

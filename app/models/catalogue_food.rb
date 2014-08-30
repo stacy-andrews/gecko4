@@ -3,9 +3,11 @@ class CatalogueFood < ActiveRecord::Base
     existing_catalogue_item = CatalogueFood.find_by(description: food.description)
 
     if existing_catalogue_item
-      existing_catalogue_item.update unit_energy: food.unit_energy
+      if food.unit_energy 
+        existing_catalogue_item.update unit_energy: food.unit_energy
+      end
     else
-      CatalogueFood.create(description: food.description, unit_energy: food.unit_energy)
+      CatalogueFood.create description: food.description, unit_energy: food.unit_energy
     end
   end
 
@@ -14,4 +16,13 @@ class CatalogueFood < ActiveRecord::Base
       CatalogueFood.update_catalogue f
     end
   end
+
+  def self.search_by_description(description) 
+    if(!description)
+      CatalogueFood.all
+    else
+      CatalogueFood.where('description LIKE ?', "%#{description}%")
+    end
+  end
+
 end

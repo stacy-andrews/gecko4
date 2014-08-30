@@ -24,6 +24,18 @@ class CatalogueFoodTest < ActiveSupport::TestCase
     assert_equal 1.1, catalogue_food.unit_energy
   end
 
+  test 'will not update existing catalogue foods unit energy when the description is matched but energy is nil' do
+    CatalogueFood.create(description: 'exists', unit_energy: 9.9)
+
+    food = Food.new(description: 'exists', unit_energy: nil)
+
+    CatalogueFood.update_catalogue food
+
+    catalogue_food = CatalogueFood.find_by(description: 'exists')
+
+    assert_equal 9.9, catalogue_food.unit_energy
+  end
+
   test 'updating all will use have the latest unit energy from matching foods' do
     now = Time.now
 
@@ -33,5 +45,28 @@ class CatalogueFoodTest < ActiveSupport::TestCase
     CatalogueFood.update_all
 
     assert_equal 2, CatalogueFood.find_by(description: 'apple').unit_energy
+  end
+
+  test 'search for partial descriptions' do
+    CatalogueFood.create(description: 'candle', unit_energy: 9.9)
+    CatalogueFood.create(description: 'exists cand', unit_energy: 9.9)
+    CatalogueFood.create(description: 'not found', unit_energy: 9.9)
+    CatalogueFood.create(description: 'can of peas', unit_energy: 9.9)
+
+
+    found_catalogue_foods = CatalogueFood.search_by_description('can')
+
+    assert_equal 3, found_catalogue_foods.count
+  end
+
+  test 'search without description gets all foods' do
+    CatalogueFood.create(description: 'candle', unit_energy: 9.9)
+    CatalogueFood.create(description: 'exists cand', unit_energy: 9.9)
+    CatalogueFood.create(description: 'not found', unit_energy: 9.9)
+    CatalogueFood.create(description: 'can of peas', unit_energy: 9.9)
+
+    found_catalogue_foods = CatalogueFood.search_by_description(nil)
+
+    assert_equal 6, found_catalogue_foods.count
   end
 end

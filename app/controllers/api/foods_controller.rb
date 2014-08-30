@@ -18,6 +18,7 @@ module Api
 
       respond_to do |format|
         if @food.save
+          CatalogueFood.update_catalogue @food
           format.json { render :show, status: :created }
         else
           format.json { render json: @food.errors, status: :unprocessable_entity }
