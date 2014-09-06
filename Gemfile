@@ -46,11 +46,11 @@ gem 'lodash-rails', '~> 2.4.1'
 
 group :development do
   gem 'thin'
-
+  gem 'delorean'
   gem 'bootstrap-generators', '~> 3.1.1.3'
 
   # need by guard to detect changes on os x
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-test'
+  gem 'guard-minitest'
   gem 'guard-livereload'
 end

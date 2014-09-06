@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :diary_days, except: [:new, :edit], shallow: false do
-      resources :exercises
-      resources :foods
+      resources :exercises, :foods
     end
+
+    get 'diary_day/today', to: 'diary_days#today'
   end
 
   resources :food_catalogues

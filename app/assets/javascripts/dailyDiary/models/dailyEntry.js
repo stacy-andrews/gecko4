@@ -3,11 +3,11 @@ angular.module('gecko')
 
     var apiPrefix = '/api/diary_days';
 
-  return {
-    new: function(dailyEntryPrototype) {
-      return new DailyEntry(dailyEntryPrototype);
-    }
-  };
+    return {
+      new: function(dailyEntryPrototype) {
+        return new DailyEntry(dailyEntryPrototype);
+      }
+    };
 
   function DailyEntry(dailyEntryPrototype) {
     var c = new client.ModelClient(apiPrefix, 

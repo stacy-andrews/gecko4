@@ -1,7 +1,8 @@
 require 'test_helper'
+require 'delorean'
 
 class DiaryDayTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test '' do
+    
+  end
 end

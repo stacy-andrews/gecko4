@@ -1,5 +1,11 @@
 
-var app = angular.module("gecko", ['ui.bootstrap', 'templates', 'apiHelpers', 'angular-lodash', 'ngRoute']);
+var app = angular.module("gecko", 
+  ['ui.bootstrap', 
+  'templates', 
+  'apiHelpers', 
+  'angular-lodash', 
+  'ngRoute', 
+  'autocomplete']);
 
 app.config(['$routeProvider', function($routeProvider) { 
   $routeProvider

@@ -24,7 +24,7 @@ angular.module("gecko")
   function DiaryDay(day) {
     return {
       get: function(getCallback) {
-        var allDays = $http.get('/api/diary_days.json');
+        var allDays = $http.get('/api/diary_days.json?date=' + day.year + '/' + day.month + '/' + day.day);
 
         allDays.success(function(data) {
 
