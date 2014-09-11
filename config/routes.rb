@@ -6,12 +6,9 @@ Rails.application.routes.draw do
     resources :diary_days, except: [:new, :edit], shallow: false do
       resources :exercises, :foods
     end
-
-    get 'diary_day/today', to: 'diary_days#today'
   end
 
   resources :food_catalogues
-
   
   get 'spa/index'
 

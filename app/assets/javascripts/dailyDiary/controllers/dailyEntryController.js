@@ -8,9 +8,6 @@ angular.module("gecko")
               })
           .get(function(d) {
             $scope.currentDay = d;
-            if($scope.currentDay.isNew()) {
-              $scope.save();
-            }
           });
 
   $scope.save = function() {
@@ -24,22 +21,20 @@ angular.module("gecko")
   function DiaryDay(day) {
     return {
       get: function(getCallback) {
-        var allDays = $http.get('/api/diary_days.json?date=' + day.year + '/' + day.month + '/' + day.day);
+        var currentDate = getTodaysDate();
 
-        allDays.success(function(data) {
+        var allDays = $http.get('/api/diary_days/' + currentDate + '.json');
 
-          var currentDate = getTodaysDate();
-
-          var currentDiaryDay = _.find(data, function(diaryDay) {
-            return diaryDay.date === currentDate;
-          });
-
-          if(currentDiaryDay != null) {
-            getCallback(dailyEntry.new(currentDiaryDay));
-            return;
+        allDays
+        .success(function(data) {
+          getCallback(dailyEntry.new(data));
+        })
+        .error(function(data, status, headers, config) {
+          if(status === 404) {
+            var newDay = dailyEntry.new({ date: currentDate });
+            newDay.save();
+            getCallback(newDay);
           }
-
-          getCallback(dailyEntry.new({ date: currentDate }));
         });
       }
     };
@@ -55,7 +50,7 @@ angular.module("gecko")
 
       return today.getFullYear() + '-' + 
              getMonth(today.getMonth()+1) + '-' + 
-             today.getDate();
+             getDay(today.getDate());
 
       function getMonth(month) {
         if(month <= 9) {
