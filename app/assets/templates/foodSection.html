@@ -1,0 +1,12 @@
+<div class="tcy">
+  <div class="tcy-full">
+    {{ section.name }} ({{ section.energy() }}) <span ng-click="section.new()" class="glyphicon glyphicon-plus"></span>
+    <span ng-click="section.template()" class="glyphicon glyphicon-cutlery"></span>
+  </div>
+  <div>
+    <table align="center">
+        <food-entry food="food" section="section" ng-repeat="food in section.foods"/>
+      </tr>
+    </table>
+  </div>
+</div>
