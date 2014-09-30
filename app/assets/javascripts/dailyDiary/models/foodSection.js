@@ -74,6 +74,8 @@ angular.module('gecko')
               return foodData.start_time;
             })
             .each(function(foodData) {
+              foodData.hasFocus = false;
+
               section.foods
                  .push(food.new(foodData, diaryDayId));
             });

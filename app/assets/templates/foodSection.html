@@ -18,7 +18,7 @@
 		    			  on-type="filterFoodCatalogue" 
 		    			  on-select="updateFromFoodCatalogue" 
 		    			  attr-inputClass="form-control"
-		    			  my-focus="food.hasFocus" />
+		    			  autocomplete-focus="food.hasFocus" />
 		  </td>
 		  <td style="padding-bottom:7px; alight:left" >
 		    <div class="form-group has-feedback">
@@ -27,7 +27,7 @@
 		    </div>
 		  </td>
 		  <td style="padding-bottom:7px; alight:left" >
-		    <input class="form-control" type="text" ng-model="food.quantity" placeholder="quantity" ng-focus="food.hasFocus" />
+		    <input class="form-control" type="text" ng-model="food.quantity" placeholder="quantity"  />
 		  </td>
 		  <td style="align: left" width="65px">
 		    {{food.totalEnergy()}}

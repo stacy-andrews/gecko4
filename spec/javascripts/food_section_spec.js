@@ -126,7 +126,16 @@ describe("Food Section", function() {
 			});
 
 			it("all foods other than new will not have focus", function() {
-				
+				_(foods)
+					.each(function(food, index) {
+						if(!isLast()) {
+							expect(food.hasFocus).toEqual(false);
+						}
+
+						function isLast() {
+							return index === foods.length - 1;
+						}
+					});
 			});
 		});
 	});
