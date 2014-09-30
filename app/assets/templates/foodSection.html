@@ -1,12 +1,42 @@
-<div class="tcy">
+<div>
   <div class="tcy-full">
     {{ section.name }} ({{ section.energy() }}) <span ng-click="section.new()" class="glyphicon glyphicon-plus"></span>
     <span ng-click="section.template()" class="glyphicon glyphicon-cutlery"></span>
   </div>
   <div>
     <table align="center">
-        <food-entry food="food" section="section" ng-repeat="food in section.foods"/>
-      </tr>
+    <tbody>
+	  	<tr class="row form-inline" ng-controller="FoodsController" ng-repeat="food in section.foods">
+		  <td style="padding-bottom:7px; alight:left" >
+		    <input class="form-control" type="time" ng-model="food.start_time" />
+		  </td>
+		  <td style="padding-bottom:7px; alight:left" >
+		    <autocomplete ng-model="food.description" 
+		    			  attr-placeholder="find food..." 
+		    			  click-activation="true" 
+		    			  data="foodCatalogue" 
+		    			  on-type="filterFoodCatalogue" 
+		    			  on-select="updateFromFoodCatalogue" 
+		    			  attr-inputClass="form-control"
+		    			  my-focus="food.hasFocus" />
+		  </td>
+		  <td style="padding-bottom:7px; alight:left" >
+		    <div class="form-group has-feedback">
+		      <input ng-model="food.unit_energy" class="form-control" type="text" placeholder="energy" />
+		      <span class="glyphicon glyphicon-fire form-control-feedback" ng-click="food.convert()"></span>
+		    </div>
+		  </td>
+		  <td style="padding-bottom:7px; alight:left" >
+		    <input class="form-control" type="text" ng-model="food.quantity" placeholder="quantity" ng-focus="food.hasFocus" />
+		  </td>
+		  <td style="align: left" width="65px">
+		    {{food.totalEnergy()}}
+		  </td>
+		  <td>
+		    <span ng-click="section.remove(food)" class="glyphicon glyphicon-remove"></span>
+		  </td>
+		</tr>
+	  </tbody>
     </table>
   </div>
 </div>

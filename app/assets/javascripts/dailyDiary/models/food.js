@@ -19,7 +19,8 @@ angular.module('gecko')
       start_time: new Date(settings.start_time),
       unit_energy: settings.unit_energy,
       quantity: settings.quantity,
-      section: settings.section
+      section: settings.section,
+      hasFocus: settings.hasFocus
     };
 
     food.totalEnergy = function () {
@@ -27,7 +28,7 @@ angular.module('gecko')
     };
 
     food.save = function() {
-      c.save(food);
+      return c.save(food);
     };
 
     food.delete = function() {

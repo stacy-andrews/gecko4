@@ -46,7 +46,7 @@ angular.module('gecko')
         {
           description: "apple",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 485,
           quantity: 2,
           section: "Lunch"
         }
@@ -55,42 +55,44 @@ angular.module('gecko')
   }
 
   function getDinnerSection(diaryDayId) {
-    return foodSection.new(diaryDayId, "Dinner", function() { 
+    var sectionName = "Dinner";
+
+    return foodSection.new(diaryDayId, sectionName, function() { 
       return [
         {
           description: "carrot",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 125,
           quantity: 3,
-          section: "Lunch"
+          section: sectionName
         },
         {
           description: "tomato",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 92,
           quantity: 2,
-          section: "Lunch"
+          section: sectionName
         },
         {
           description: "avocado",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 1350,
           quantity: 0.5,
-          section: "Lunch"
+          section: sectionName
         },
         {
           description: "cold meat",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 500,
           quantity: 3,
-          section: "Lunch"
+          section: sectionName
         },
         {
           description: "mini bites",
           start_time: new Date(),
-          unit_energy: 0,
+          unit_energy: 350,
           quantity: 3,
-          section: "Lunch"
+          section: sectionName
         }
       ]; 
     });

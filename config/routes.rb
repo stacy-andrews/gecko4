@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :food_catalogues
+
+  get 'scratch/index'
   
   get 'spa/index'
 

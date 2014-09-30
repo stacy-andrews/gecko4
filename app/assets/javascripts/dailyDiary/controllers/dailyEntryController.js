@@ -1,32 +1,53 @@
 angular.module("gecko")
-       .controller('DailyEntryController', function($scope, $routeParams, $http, dailyEntry) {
+       .controller('DailyEntryController', function($q, $scope, $routeParams, $http, dailyEntry, navigation) {
 
-  new DiaryDay({
+  var current = {
                 year: parseInt($routeParams.year), 
                 month: parseInt($routeParams.month),
                 day: parseInt($routeParams.day)
-              })
+              };
+
+  $scope.status = {
+    isLoading: false
+  };
+
+  $scope.navigation = navigation.new(current);
+
+  new DiaryDay(current)
           .get(function(d) {
             $scope.currentDay = d;
           });
 
   $scope.save = function() {
-    $scope.currentDay.save();
+    $scope.status.isLoading = true;
+    
+    $scope.currentDay
+          .save()
+          .finally(function() {
+            $scope.status.isLoading = false;
+          }); 
   };
 
   $scope.delete = function() {
     $scope.currentDay.delete();
   };
 
+  $scope.previousDay = function() {
+    $scope.navigation.previous();
+  }
+
   function DiaryDay(day) {
     return {
       get: function(getCallback) {
+        var deferred = $q.defer();
+
         var currentDate = getTodaysDate();
 
         var allDays = $http.get('/api/diary_days/' + currentDate + '.json');
 
         allDays
         .success(function(data) {
+          
           getCallback(dailyEntry.new(data));
         })
         .error(function(data, status, headers, config) {
@@ -36,8 +57,26 @@ angular.module("gecko")
             getCallback(newDay);
           }
         });
+
+        return deferred.promise;
       }
     };
+
+    function asyncGreet(name) {
+      var deferred = $q.defer();
+
+      setTimeout(function() {
+        deferred.notify('About to greet ' + name + '.');
+
+        if (okToGreet(name)) {
+          deferred.resolve('Hello, ' + name + '!');
+        } else {
+          deferred.reject('Greeting ' + name + ' is not allowed.');
+        }
+      }, 1000);
+
+      return deferred.promise;
+    }
 
     function getTodaysDate() {
       if(!isNaN(day.year)) {

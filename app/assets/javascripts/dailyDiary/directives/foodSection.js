@@ -3,7 +3,7 @@ angular.module("gecko").directive('foodSection', function() {
     restrict: 'E',
     templateUrl: 'foodSection.html',
     scope: {
-      section: '=section'
+      section: '='
     }
   };
 });

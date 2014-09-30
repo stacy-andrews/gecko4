@@ -53,4 +53,8 @@ group :development do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-minitest'
   gem 'guard-livereload'
+
+  gem 'jasmine'
+  gem 'guard-jasmine'
+  gem 'sinon-rails'
 end

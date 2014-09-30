@@ -22,6 +22,8 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
+app.constant('$moment', moment);
+
 angular.module("gecko").controller('PagerController', function($scope) {
   $scope.forward = function() {
     alert('forward - todo');

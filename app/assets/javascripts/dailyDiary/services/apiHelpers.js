@@ -13,6 +13,8 @@ angular.module('apiHelpers', [])
           model.setId(successModel.id);
         }
       });
+
+      return createPromise;
     }
 
     function put(baseUrl, model, modelSetter) {
@@ -20,7 +22,7 @@ angular.module('apiHelpers', [])
 
       console.log('updating resource - ' + resource);
 
-      $http.put(resource, modelSetter(model));
+      return $http.put(resource, modelSetter(model));
     }
 
     function remove(baseurl, model) {
@@ -36,10 +38,10 @@ angular.module('apiHelpers', [])
         return {
           save: function(model) {
             if(isNaN(model.id)) {
-              post(baseUrl, model, modelSetter);
-            } else {
-              put(baseUrl, model, modelSetter);
-            }
+              return post(baseUrl, model, modelSetter);
+            } 
+              
+            return put(baseUrl, model, modelSetter);
           },
           delete: function(model) {
             if(!isNaN(model.id)) { 

@@ -1,26 +1,60 @@
 <div> 
-  <div class="row">
-    <div class="tcy tcy-full">
-  {{ currentDay.date | date:'mediumDate' }} ({{currentDay.energySummary()}})  <span class="glyphicon glyphicon-save" ng-click="save()"></span>
-    </div>
-  </div>
+<accordion close-others="false">
 
-  <div class="row" style="height:10px">
-  </div> 
-  <div class="row ">
-    <div class="col-md-6 tcy">
+  <accordion-group is-open="true" is-disabled="true">
+    <accordion-heading>
+      {{ currentDay.date | date:'mediumDate' }} ({{currentDay.energySummary()}})
+    </accordion-heading>
+
+    <div style="float: left">
+      <a class="btn btn-info" ng-href="{{navigation.previousUrl}}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="btn btn-info" ng-href="{{navigation.nextUrl}}" ng-disabled="!navigation.canDoNext">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  
+    <button type="button" class="btn btn-primary" ng-click="save()">
+      <span ng-show="status.isLoading"><img src="/assets/loading-cylon.svg" /></span>
+      <span ng-show="!status.isLoading">Save</span>
+    </button>
+    <button type="button" class="btn btn-danger " style="float:right" ng-click="delete()">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+  </accordion-group>
+
+  <accordion-group is-open="true" is-disabled="false">
+    <accordion-heading>
+      Food ({{currentDay.foodSummary()}})
+    </accordion-heading>
+
+    <div class="row" ng-repeat="section in currentDay.sections">
+      <x-food-section section="section"></food>
+    </div>
+  </accordion-group>
+
+  <accordion-group is-open="false" is-disabled="false">
+    <accordion-heading>
+      Exercise ({{currentDay.exerciseSummary()}})
+    </accordion-heading>
+
+    <div class="col-md-6">
       <exercise info="currentDay.toWork" ></exercise>
     </div>
-    <div class="col-md-6 tcy">
+    <div class="col-md-6">
       <exercise info="currentDay.fromWork" ></exercise>
     </div>
-  </div>
-  <div class="row" style="height:10px">
-  </div>  
-  <div class="row" ng-repeat="section in currentDay.sections">
-    <food-section section="section"></food>
-  </div>
-  <div class="row">
-    <span class="glyphicon glyphicon-exclamation-sign" ng-click="delete()"></span>
-  </div>
+  </accordion-group>
+  <accordion-group is-open="false" is-disabled="false">
+    <accordion-heading>
+      Measurements
+    </accordion-heading>
+
+    <div class="col-md-6">
+      <x-measurements />
+    </div>
+  </accordion-group>
+</accordion>
+
 </div>

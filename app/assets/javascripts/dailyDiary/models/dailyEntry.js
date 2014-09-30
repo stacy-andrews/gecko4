@@ -1,5 +1,5 @@
 angular.module('gecko')
-  .factory('dailyEntry', function($http, client, standardFoodSections, exercise) {
+  .service('dailyEntry', function($q, $http, client, standardFoodSections, exercise) {
 
     var apiPrefix = '/api/diary_days';
 
@@ -21,28 +21,40 @@ angular.module('gecko')
         return typeof dailyEntryPrototype.id == 'undefined';
       },
       date: dailyEntryPrototype.date,
-      is_work_day: dailyEntryPrototype.is_,
+      is_work_day: dailyEntryPrototype.is_work_day,
       fromWork: exercise.new(null, dailyEntryPrototype.id),
       toWork: exercise.new(null, dailyEntryPrototype.id),
       sections: standardFoodSections.new(dailyEntryPrototype.id),
       energySummary: function() {
-        return -8000 + 
+        return -9660 + 
             -1*this.toWork.energy +
             -1*this.fromWork.energy +
-            _.reduce(this.sections, function(memo, section) {
+            entry.foodSummary()
+      },
+      foodSummary: function() {
+        return _.reduce(this.sections, function(memo, section) {
               return memo + section.energy();
             } , 0);
       },
+      exerciseSummary: function() {
+        return 1*this.toWork.energy + 
+                1*this.fromWork.energy;
+      },
       save: function() {
-        c.save(this);
+        var promises = [];
 
-        if(typeof this.id != 'undefined') { 
-          this.toWork.save();
-          this.fromWork.save();
-          _.each(this.sections, function(section) {
-            section.save();
-          });
+        promises.push(c.save(this));
+
+        if(typeof entry.id != 'undefined') { 
+            promises.push(entry.toWork.save());
+            promises.push(entry.fromWork.save());
+            
+            _.each(entry.sections, function(section) {
+              promises.push(section.save());
+            });
         }
+
+        return $q.all(promises);
       },
       delete: function() {
         c.delete(this);

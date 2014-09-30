@@ -3,9 +3,10 @@ angular.module("gecko").directive('foodEntry', function() {
     restrict: 'E',
     templateUrl: 'foodEntry.html',
     scope: {
-      food: '=food',
-      section: '=section'
+      food: '=',
+      section: '='
     },
-    controller: 'FoodsController'
+    controller: 'FoodsController',
+    replace: true
   };
-});
+}); 

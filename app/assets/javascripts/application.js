@@ -10,15 +10,28 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require bootstrap-sprockets
+
 //= require unstable/angular
 //= require unstable/angular-route
+
 //= require lodash
+//= require angular-lodash
+
+//= require moment
+//= require angular-moment
+
+//= require autocomplete
+
 //= require angular-rails-templates
 //= require angular-ui-bootstrap-tpls
-//= require_tree ../templates
+
+
 //= require jquery_ujs
 //= require turbolinks
+
+//= require_tree ../templates
 //= require_tree .
 

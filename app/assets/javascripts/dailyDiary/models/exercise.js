@@ -20,7 +20,7 @@ angular.module('gecko')
         start_time: null,
         duration: null,
         save: function() {
-          c.save(this);
+          return c.save(this);
         },
         setDiaryDayId: function(diaryDayIdEx) {
           c = new client.ModelClient('/api/diary_days/' + diaryDayIdEx + '/exercises', 
@@ -37,7 +37,7 @@ angular.module('gecko')
         start_time: new Date(exercisePrototype.start_time),
         duration: exercisePrototype.duration,
         save: function() {
-          c.save(this);
+          return c.save(this);
         },
         setDiaryDayId: function(diaryDayIdEx) {
           c = new client.ModelClient('/api/diary_days/' + diaryDayIdEx + '/exercises', 
