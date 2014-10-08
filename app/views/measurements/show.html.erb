@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Chest:</strong>
+  <%= @measurements.chest %>
+</p>
+
+<p>
+  <strong>Stomach:</strong>
+  <%= @measurements.stomach %>
+</p>
+
+<p>
+  <strong>Thigh:</strong>
+  <%= @measurements.thigh %>
+</p>
+
+<p>
+  <strong>Diary day:</strong>
+  <%= @measurements.diary_day_id %>
+</p>
+
+<%= link_to 'Edit', edit_measurements_path(@measurements) %> |
+<%= link_to 'Back', measurements_index_path %>

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CatalogueFoodsControllerTest < ActionController::TestCase
   setup do
-    @catalogue_food = catalogue_foods(:one)
+    @catalogue_food = create(:catalogue_food)
   end
 
   test "should get index" do

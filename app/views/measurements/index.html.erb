@@ -1,0 +1,31 @@
+<h1>Listing measurements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Chest</th>
+      <th>Stomach</th>
+      <th>Thigh</th>
+      <th>Diary day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measurements.each do |measurements| %>
+      <tr>
+        <td><%= measurements.chest %></td>
+        <td><%= measurements.stomach %></td>
+        <td><%= measurements.thigh %></td>
+        <td><%= measurements.diary_day_id %></td>
+        <td><%= link_to 'Show', measurements %></td>
+        <td><%= link_to 'Edit', edit_measurements_path(measurements) %></td>
+        <td><%= link_to 'Destroy', measurements, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Measurements', new_measurements_path %>

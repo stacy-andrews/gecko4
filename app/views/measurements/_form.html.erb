@@ -1,0 +1,33 @@
+<%= form_for(@measurements) do |f| %>
+  <% if @measurements.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@measurements.errors.count, "error") %> prohibited this measurements from being saved:</h2>
+
+      <ul>
+      <% @measurements.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :chest %><br>
+    <%= f.text_field :chest %>
+  </div>
+  <div class="field">
+    <%= f.label :stomach %><br>
+    <%= f.text_field :stomach %>
+  </div>
+  <div class="field">
+    <%= f.label :thigh %><br>
+    <%= f.text_field :thigh %>
+  </div>
+  <div class="field">
+    <%= f.label :diary_day_id %><br>
+    <%= f.number_field :diary_day_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

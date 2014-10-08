@@ -57,4 +57,5 @@ group :development do
   gem 'jasmine'
   gem 'guard-jasmine'
   gem 'sinon-rails'
+  gem 'factory_girl_rails'
 end

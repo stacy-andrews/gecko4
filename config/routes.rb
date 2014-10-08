@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :diary_days, except: [:new, :edit], shallow: false do
-      resources :exercises, :foods
+      resources :exercises, :foods, :measurements
     end
   end
 
