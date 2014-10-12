@@ -51,7 +51,9 @@ module Api
       end
 
       def food_params
-        params.require(:food).permit(:unit_energy, :start_time, :description, :section, :quantity)
+        params.require(:food)
+              .permit(:unit_energy, :start_time, 
+                      :description, :section, :quantity)
       end
   end
 end
