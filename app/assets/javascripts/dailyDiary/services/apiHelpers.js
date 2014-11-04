@@ -9,6 +9,7 @@ angular.module('apiHelpers', [])
 
       createPromise.success(function(successModel) {
         model.id = successModel.id;
+        
         if(typeof model.setId != 'undefined') {
           model.setId(successModel.id);
         }

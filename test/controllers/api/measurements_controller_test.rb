@@ -22,9 +22,9 @@ class Api::MeasurementsControllerTest < ActionController::TestCase
   end
 
   test "creating a measurement for an invalid diary day will 404" do
-    post :create, diary_day_id: 50, measurements: { chest: 25, stomach: 35, thigh: 45 } 
-  
-    assert_response :not_found
+    assert_raises(ActiveRecord::RecordNotFound) do 
+      post :create, diary_day_id: 50, measurements: { chest: 25, stomach: 35, thigh: 45 } 
+    end
   end
 
   test "can create a measurement" do
@@ -36,6 +36,12 @@ class Api::MeasurementsControllerTest < ActionController::TestCase
             measurements: { chest: 25, stomach: 35, thigh: 45 } ,
             format: :json
     end
+
+    updated_measurement = assigns(:measurements)
+
+    assert_equal(25, updated_measurement.chest)
+    assert_equal(35, updated_measurement.stomach)
+    assert_equal(45, updated_measurement.thigh)
   end
 
   test "can update a measurement" do
@@ -45,7 +51,6 @@ class Api::MeasurementsControllerTest < ActionController::TestCase
         measurements: { chest: 26, stomach: 37, thigh: 48 }, 
         format: :json 
         
-  
     assert_response :success
 
     updated_measurement = assigns(:measurements)

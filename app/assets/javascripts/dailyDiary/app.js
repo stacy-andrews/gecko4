@@ -1,4 +1,3 @@
-
 var app = angular.module("gecko", 
   ['ui.bootstrap', 
   'templates', 

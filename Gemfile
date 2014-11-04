@@ -43,6 +43,7 @@ gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 gem 'angular-rails-templates'
 gem 'lodash-rails', '~> 2.4.1'
+gem 'font-awesome-sass-rails', '~> 3.0.2.2'
 
 group :development do
   gem 'thin'

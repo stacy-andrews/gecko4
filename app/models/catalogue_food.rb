@@ -6,8 +6,12 @@ class CatalogueFood < ActiveRecord::Base
       if food.unit_energy 
         existing_catalogue_item.update unit_energy: food.unit_energy
       end
+
+      if food.caffeine
+        existing_catalogue_item.update caffeine: food.caffeine
+      end
     else
-      CatalogueFood.create description: food.description, unit_energy: food.unit_energy
+      CatalogueFood.create description: food.description, unit_energy: food.unit_energy, caffeine: food.caffeine
     end
   end
 

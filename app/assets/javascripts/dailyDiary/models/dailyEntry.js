@@ -1,5 +1,5 @@
 angular.module('gecko')
-  .service('dailyEntry', function($q, $http, client, standardFoodSections, exercise) {
+  .service('dailyEntry', function($q, $http, client, standardFoodSections, exercise, measurements) {
 
     var apiPrefix = '/api/diary_days';
 
@@ -18,13 +18,15 @@ angular.module('gecko')
     var entry = {
       id: dailyEntryPrototype.id,
       isNew: function() {
-        return typeof dailyEntryPrototype.id == 'undefined';
+        return typeof dailyEntryPrototype.id === 'undefined';
       },
       date: dailyEntryPrototype.date,
       is_work_day: dailyEntryPrototype.is_work_day,
       fromWork: exercise.new(null, dailyEntryPrototype.id),
       toWork: exercise.new(null, dailyEntryPrototype.id),
       sections: standardFoodSections.new(dailyEntryPrototype.id),
+      measurements: measurements.new(dailyEntryPrototype.id),
+
       energySummary: function() {
         return -9660 + 
             -1*this.toWork.energy +
@@ -52,6 +54,8 @@ angular.module('gecko')
             _.each(entry.sections, function(section) {
               promises.push(section.save());
             });
+
+            promises.push(entry.measurements.save());
         }
 
         return $q.all(promises);
@@ -61,14 +65,19 @@ angular.module('gecko')
       },
       setId: function(newId) {
         this.id = newId;
+        
         this.toWork.setDiaryDayId(newId);
         this.fromWork.setDiaryDayId(newId);
+
+        this.measurements.setDiaryDayId(newId);
 
         _.each(this.sections, function(section) {
           section.setDiaryDayId(newId);
         });
       }
     };
+
+    entry.measurements.get();
 
     if(typeof dailyEntryPrototype.id != 'undefined') {
       var exercisesPromise = $http.get(apiPrefix + '/' + dailyEntryPrototype.id + '/exercises.json');

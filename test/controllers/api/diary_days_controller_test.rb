@@ -23,5 +23,4 @@ class Api::DiaryDaysControllerTest < ActionController::TestCase
 
     assert_response :not_found
   end
-
 end
