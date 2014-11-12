@@ -25,6 +25,8 @@
 
 //= require autocomplete
 
+//= require dialogs.min
+
 //= require angular-rails-templates
 //= require angular-ui-bootstrap-tpls
 

@@ -1,4 +1,4 @@
-angular.module("gecko").controller('FoodsController', function($scope, $http) {
+angular.module("gecko").controller('FoodsController', function($scope, $http, $dialogs) {
   $scope.foodCatalogue = [];
   $scope.selectedFood = {};
   var currentCatalogue = [];
@@ -28,6 +28,15 @@ angular.module("gecko").controller('FoodsController', function($scope, $http) {
 	  if(typeof(selectedFood) !== 'undefined') {
   		$scope.food.unit_energy = selectedFood.unit_energy;
 	  }
-  	
   }
+
+  $scope.showFoodAttributes = function() {
+      dlg = $dialogs.create('foodAttributes.html','FoodAttributesController',{},{key: false,back: 'static'});
+        dlg.result.then(function(name){
+          $scope.name = name;
+        },function(){
+          $scope.name = 'You decided not to enter in your name, that makes me sad.';
+        });
+  }
+
 });

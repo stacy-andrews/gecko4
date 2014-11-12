@@ -4,7 +4,8 @@ var app = angular.module("gecko",
   'apiHelpers', 
   'angular-lodash', 
   'ngRoute', 
-  'autocomplete']);
+  'autocomplete',
+  'dialogs']);
 
 app.config(['$routeProvider', function($routeProvider) { 
   $routeProvider

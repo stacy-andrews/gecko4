@@ -18,7 +18,7 @@ angular.module('gecko')
       description: settings.description,
       start_time: new Date(settings.start_time),
       unit_energy: settings.unit_energy,
-       quantity: settings.quantity,
+      quantity: settings.quantity,
       section: settings.section,
       hasFocus: settings.hasFocus
     };
