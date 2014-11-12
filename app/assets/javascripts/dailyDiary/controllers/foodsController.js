@@ -32,10 +32,10 @@ angular.module("gecko").controller('FoodsController', function($scope, $http, $d
 
   $scope.showFoodAttributes = function() {
       dlg = $dialogs.create('foodAttributes.html','FoodAttributesController',{},{key: false,back: 'static'});
-        dlg.result.then(function(name){
-          $scope.name = name;
+        dlg.result.then(function(attributes){
+          $scope.food.caffeine = attributes.caffeine;
         },function(){
-          $scope.name = 'You decided not to enter in your name, that makes me sad.';
+          // do nothing for now
         });
   }
 
