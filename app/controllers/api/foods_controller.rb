@@ -53,7 +53,7 @@ module Api
       def food_params
         params.require(:food)
               .permit(:unit_energy, :start_time, 
-                      :description, :section, :quantity)
+                      :description, :section, :quantity, :caffeine)
       end
   end
 end

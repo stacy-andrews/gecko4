@@ -8,6 +8,7 @@ angular.module("gecko").controller('FoodsController', function($scope, $http, $d
   	 	$scope.foodCatalogue = [];
   		return;
   	}
+
   	$http
   		.get('/catalogue_foods.json?description=' + typed)
 	  	.success(function(data) {
@@ -27,16 +28,21 @@ angular.module("gecko").controller('FoodsController', function($scope, $http, $d
 
 	  if(typeof(selectedFood) !== 'undefined') {
   		$scope.food.unit_energy = selectedFood.unit_energy;
+      $scope.food.caffeine = selectedFood.caffeine;
 	  }
   }
 
   $scope.showFoodAttributes = function() {
-      dlg = $dialogs.create('foodAttributes.html','FoodAttributesController',{},{key: false,back: 'static'});
-        dlg.result.then(function(attributes){
-          $scope.food.caffeine = attributes.caffeine;
-        },function(){
-          // do nothing for now
-        });
+      dlg = $dialogs.create('foodAttributes.html',
+                            'FoodAttributesController',
+                            { caffeine: $scope.food.caffeine },
+                            {key: false, back: 'static'});
+      
+      dlg.result.then(function(attributes){
+        $scope.food.caffeine = attributes.caffeine;
+      },function(){
+        // do nothing for now
+      });
   }
 
 });

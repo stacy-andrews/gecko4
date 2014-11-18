@@ -20,7 +20,8 @@ angular.module('gecko')
       unit_energy: settings.unit_energy,
       quantity: settings.quantity,
       section: settings.section,
-      hasFocus: settings.hasFocus
+      hasFocus: settings.hasFocus,
+      caffeine: settings.caffeine
     };
 
     food.totalEnergy = function () {

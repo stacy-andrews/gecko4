@@ -6,7 +6,7 @@
 		<ng-form name="foodAttributesDialog" novalidate role="form">
 		<div class="form-group input-group-lg" ng-class="{true: 'has-error'}[foodAttributesDialog.caffeine.$dirty && foodAttributesDialog.caffeine.$invalid]">
 			<label class="control-label" for="caffeine">Caffeine:</label>
-			<input type="text" class="form-control" name="caffeine" id="caffeine" ng-model="user.name" ng-keyup="hitEnter($event)" required>
+			<input type="text" class="form-control" name="caffeine" id="caffeine" ng-model="foodAttributes.caffeine" ng-keyup="hitEnter($event)" required>
 			<span class="help-block">Coffee coffee coffee.</span>
 		</div>
 		</ng-form>
