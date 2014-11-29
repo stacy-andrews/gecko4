@@ -45,6 +45,8 @@ gem 'angular-rails-templates'
 gem 'lodash-rails', '~> 2.4.1'
 gem 'font-awesome-sass-rails', '~> 3.0.2.2'
 
+gem 'unicorn'
+
 group :development do
   gem 'thin'
   gem 'delorean'
