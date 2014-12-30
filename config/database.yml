@@ -23,4 +23,4 @@ production:
   pool: 5
   username: postgres
   password: 123123123
-  host: db
+  host: pg

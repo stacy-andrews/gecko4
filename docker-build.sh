@@ -8,4 +8,11 @@ docker rm $container
 
 docker build -t $proj .
 
-docker run -d -p 80:80 --link gecko4-postgres:db -e SECRET_KEY_BASE=prod --name=$container  $proj
+if [ $? -eq 0 ]; then
+  docker run -d -p 80 \
+         --name $container \
+         --link gecko4-postgres:pg \
+         $proj
+else
+  echo 'failed to build'
+fi
