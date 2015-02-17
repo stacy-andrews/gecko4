@@ -24,3 +24,12 @@ production:
   username: postgres
   password: 123123123
   host: pg
+
+sarah:
+  adapter: postgresql
+  encoding: unicode
+  database: gecko4_sarah
+  pool: 5
+  username: postgres
+  password: 123123123
+  host: pg

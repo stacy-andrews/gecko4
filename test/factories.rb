@@ -1,4 +1,7 @@
-FactoryGirl.define do 
+FactoryGirl.define do  factory :user_setting do
+    resting_metabolic_rate "9.99"
+  end
+ 
 	factory :diary_day do 
 		date DateTime.new(2014, 10, 8)
   		is_work_day true

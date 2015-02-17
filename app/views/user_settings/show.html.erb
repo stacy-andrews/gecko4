@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resting metabolic rate:</strong>
+  <%= @user_setting.resting_metabolic_rate %>
+</p>
+
+<%= link_to 'Edit', edit_user_setting_path(@user_setting) %> |
+<%= link_to 'Back', user_settings_path %>

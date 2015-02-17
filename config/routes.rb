@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :user_settings
+
   resources :catalogue_foods
 
   namespace :api do

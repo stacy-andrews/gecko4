@@ -1,0 +1,21 @@
+<%= form_for(@user_setting) do |f| %>
+  <% if @user_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_setting.errors.count, "error") %> prohibited this user_setting from being saved:</h2>
+
+      <ul>
+      <% @user_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :resting_metabolic_rate %><br>
+    <%= f.text_field :resting_metabolic_rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

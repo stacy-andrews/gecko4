@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028230052) do
+ActiveRecord::Schema.define(version: 20150101040244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,12 @@ ActiveRecord::Schema.define(version: 20141028230052) do
     t.decimal  "stomach"
     t.decimal  "thigh"
     t.integer  "diary_day_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_settings", force: true do |t|
+    t.decimal  "resting_metabolic_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

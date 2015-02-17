@@ -1,7 +1,7 @@
 <div>
   <div class="tcy-full">
-    {{ section.name }} ({{ section.energy() }}) <span ng-click="section.new()" class="glyphicon glyphicon-plus"></span>
-    <span ng-click="section.template()" class="glyphicon glyphicon-cutlery"></span>
+    {{ section.name }} ({{ section.energy() }}) <a class="btn btn-info" ng-click="section.new()"><span class="glyphicon glyphicon-plus"></span></a>
+    <a class="btn btn-info" ng-click="section.template()"><span class="glyphicon glyphicon-cutlery"></span></a>
   </div>
   <div>
     <table align="center">
@@ -33,8 +33,8 @@
 		    {{food.totalEnergy()}}
 		  </td>
 		  <td>
-		    <span ng-click="section.remove(food)" class="glyphicon glyphicon-remove"></span>
-		    <span ng-click="showFoodAttributes()" class="glyphicon glyphicon-remove"></span>
+		    <button type="button" ng-click="section.remove(food)" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+		    <button type="button" class="btn btn-info"><span ng-click="showFoodAttributes()" class="glyphicon glyphicon-list-alt"></span></button>
 
 		  </td>
 		</tr>

@@ -1,6 +1,9 @@
 FROM dockerfile/ruby
 MAINTAINER peepable
 
+RUN \
+  gem install foreman
+
 # puma dependency
 RUN \
   apt-get update && \
@@ -34,8 +37,6 @@ ADD . /app
 ENV RAILS_ENV production
 ENV SECRET_KEY_BASE abcdef12345
 
-RUN \
-  gem install foreman
 
 CMD foreman start -f Procfile
 
