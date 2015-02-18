@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101040244) do
+ActiveRecord::Schema.define(version: 20150217233214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20150101040244) do
     t.decimal  "stomach"
     t.decimal  "thigh"
     t.integer  "diary_day_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.string   "comment"
+    t.string   "section"
+    t.time     "start_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

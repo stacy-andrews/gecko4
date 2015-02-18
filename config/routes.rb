@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :notes
+
   resources :user_settings
 
   resources :catalogue_foods
 
   namespace :api do
     resources :diary_days, except: [:new, :edit], shallow: false do
-      resources :exercises, :foods, :measurements
+      resources :exercises, :foods, :measurements, :notes 
     end
   end
 

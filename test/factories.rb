@@ -1,4 +1,11 @@
-FactoryGirl.define do  factory :user_setting do
+FactoryGirl.define do  
+
+  factory :note do
+    comment "MyString"
+section "MyString"
+start_time "2015-02-18 07:32:14"
+  end
+  factory :user_setting do
     resting_metabolic_rate "9.99"
   end
  
