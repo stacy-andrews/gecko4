@@ -1,11 +1,12 @@
 module Api
   class NotesController < ApplicationController
     before_action :set_note, only: [:show, :edit, :update, :destroy]
+    before_action :set_diary_day, only: [:index]
 
     # GET /notes
     # GET /notes.json
     def index
-      @notes = Note.all
+      @notes = @diary_day.notes
     end
 
     # GET /notes/1
@@ -60,9 +61,13 @@ module Api
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_note
-        @diary_day = DiaryDay.find(params[:diary_day_id])
+        set_diary_day
 
         @note = Note.find(params[:id])
+      end
+
+      def set_diary_day
+        @diary_day = DiaryDay.find_by!(date: params[:diary_day_id])
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.
