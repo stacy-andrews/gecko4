@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat Oct 25 2014 09:14:29 GMT+0800 (AWST)
+// Generated on Thu Feb 19 2015 16:32:49 GMT+1030 (ACDT)
 
 module.exports = function(config) {
   config.set({
@@ -15,15 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '/Users/stacyandrews/.rvm/gems/ruby-2.1.1@gecko4/gems/angularjs-rails-1.2.22/vendor/assets/javascripts/unstable/angular.js',
-      '/Users/stacyandrews/.rvm/gems/ruby-2.1.1@gecko4/gems/angularjs-rails-1.2.22/vendor/assets/javascripts/unstable/angular-mocks.js',
-      '/Users/stacyandrews/.rvm/gems/ruby-2.1.1@gecko4/gems/angular-ui-bootstrap-rails-0.11.0/vendor/assets/javascripts/*.js',
-      '/Users/stacyandrews/.rvm/gems/ruby-2.1.1@gecko4/gems/angular-rails-templates-0.1.3/vendor/assets/javascripts/angular-rails-templates.js.erb',
-      'http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js',
-      'vendor/assets/javascripts/**/*.js',
-      'vendor/assets/templates/*.html',
       'app/assets/javascripts/**/*.js',
-      'spec/javascripts/**/*.js'
+      'spec/**/*spec.js'
     ],
 
 

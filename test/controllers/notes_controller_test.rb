@@ -2,11 +2,11 @@ require 'test_helper'
 
 class NotesControllerTest < ActionController::TestCase
   setup do
-    @note = notes(:one)
+    @note = create(:note)
   end
 
   test "should get index" do
-    get :index
+    get :index, :diary_day_id => 1
     assert_response :success
     assert_not_nil assigns(:notes)
   end

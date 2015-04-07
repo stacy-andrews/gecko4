@@ -50,3 +50,7 @@ group :development do
   gem 'sinon-rails'
   gem 'factory_girl_rails'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+end

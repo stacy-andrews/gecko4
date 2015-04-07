@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserSettingsControllerTest < ActionController::TestCase
   setup do
-    @user_setting = user_settings(:one)
+    @user_setting = create(:user_setting)
   end
 
   test "should get index" do
