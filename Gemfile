@@ -34,6 +34,11 @@ gem 'puma'
 
 gem 'bootstrap-generators', '~> 3.1.1.3'
 
+# Gemfile
+gem 'rabl'
+# Also add either `oj` or `yajl-ruby` as the JSON parser
+gem 'oj'
+
 group :development do
   gem 'spring'
 

@@ -1,19 +1,16 @@
 module Api  
   class FoodsController < ApplicationController
     before_action :set_foods, only: [:show, :update, :destroy]
-
+    before_action :set_diary_day
+    
     def show
     end
 
     def index
-      @diary_day = DiaryDay.find(params[:diary_day_id])
-
       @foods = @diary_day.foods
     end
 
     def create
-      @diary_day = DiaryDay.find(params[:diary_day_id])
-
       @food = @diary_day.foods.build(food_params)
 
       respond_to do |format|
@@ -45,9 +42,11 @@ module Api
 
     private
       def set_foods
-        @diary_day = DiaryDay.find(params[:diary_day_id])
-
         @food = Food.find(params[:id])
+      end
+
+      def set_diary_day
+        @diary_day = DiaryDay.find_by!(date: params[:diary_day_id])
       end
 
       def food_params

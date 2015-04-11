@@ -1,7 +1,7 @@
 module Api
   class DiaryDaysController < ApplicationController
     before_action :set_diary_day, only: [:show, :update, :destroy]
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    # rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def not_found
       render status: 404, json: { error_message: "The resource you were looking for does not exist" }
