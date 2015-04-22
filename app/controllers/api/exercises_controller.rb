@@ -2,18 +2,16 @@ module Api
   class ExercisesController < ApplicationController
     before_action :set_exercise, only: [:show, :update, :destroy]
 
+    before_action :set_diary_day
+    
     def show
     end
 
     def index
-      @diary_day = DiaryDay.find(params[:diary_day_id])
-
       @exercises = @diary_day.exercises
     end
 
     def create
-      @diary_day = DiaryDay.find(params[:diary_day_id])
-
       @exercise = @diary_day.exercises.build(exercise_params)
 
       respond_to do |format|
@@ -38,6 +36,10 @@ module Api
     private
       def set_exercise
         @exercise = Exercise.find(params[:id])
+      end
+
+      def set_diary_day
+        @diary_day = DiaryDay.find_by!(date: params[:diary_day_id])
       end
 
       def exercise_params
